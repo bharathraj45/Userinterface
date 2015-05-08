@@ -17,6 +17,10 @@
 @property (nonatomic, weak) IBOutlet UIButton *btnRegister;
 @property (nonatomic, weak) IBOutlet UIButton *btnLoginAsGuest;
 
+@property (nonatomic, strong) NSString *name;
+
+@property (nonatomic) NSUInteger age;
+
 
 -(IBAction)btnLoginDataClick:(UIButton *)sender;
 

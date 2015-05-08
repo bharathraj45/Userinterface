@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "Macros.h"
 
+static void *childContext = &childContext;
+static void *childContext1 = &childContext1;
 @interface ViewController ()
 
 @end
@@ -21,6 +23,8 @@
 @synthesize btnForgotPassword;
 @synthesize btnLoginAsGuest;
 @synthesize btnRegister;
+@synthesize name;
+@synthesize age;
 
 
 
@@ -62,7 +66,9 @@
     [self.btnRegister setTitleColor:UIColorFromRGBWithAlpha(0xC1012F, 1.0) forState:UIControlStateNormal];
     [self.btnLoginAsGuest setTitleColor:UIColorFromRGBWithAlpha(0xC1012F, 1.0) forState:UIControlStateNormal];
     
-    
+//    [self addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+//    [self addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+
     //self.btnForgotPassword. = UIColorFromRGBWithAlpha(0xC60010, 1.0);
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"mauritius"]];
 //    CAGradientLayer *gradient = [CAGradientLayer layer];2996DD 39A0E0 1D8F66 2C9A74
@@ -70,8 +76,39 @@
 //    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor blueColor] CGColor], (id)[[UIColor whiteColor] CGColor], nil];
 //    [self.view.layer insertSublayer:gradient atIndex:0];
     //F35343
-    //C1012F
+//    //C1012F
+    [self setValue:@"qqqq" forKey:@"name"];
+    [self setValue:[NSNumber numberWithUnsignedInt:4] forKey:@"age"];
+    //[someObject.property setText:@"this is a text"];
+    //[self setValue:@"4" forKeyPath:@"name.length"];
+//    NSLog(@"%@", [self valueForKey:@"name"]);
+//    NSLog(@"%@", [self valueForKey:@"age"]);
+    //self.name.length
+//
     
+}
+
+//-(void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    
+//    [self addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+//    [self addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+//}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    if (context == childContext) {
+        
+    
+    if([keyPath isEqualToString:@"name"]){
+        NSLog(@"the value is changed %@", change);
+    }
+    if([keyPath isEqualToString:@"age"]){
+        NSLog(@"the value is changed %@", change);
+    }
+    }
+    else if (context == childContext1 ){
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,8 +116,25 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)dealloc{
     
+}
+-(instancetype) init{
+    self = [super init];
+    if (self) {
+        self.name = @"";
+        self.age = 0;
+    }
+    return  self;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:childContext];
+    [self addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:childContext];
+
+    [self setValue:@"qqqq1" forKey:@"name"];
+    [self setValue:[NSNumber numberWithUnsignedInt:5] forKey:@"age"];
     self.txtLogin.layer.cornerRadius = 8.0f;
     self.txtLogin.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.txtLogin.layer.borderWidth = 1.0f;
@@ -92,8 +146,26 @@
     self.txtPassword.layer.masksToBounds = true;
     
     self.btnLoginData.layer.cornerRadius = 8.0f;
+    
+    [self willChangeValueForKey:@"name"];
+    self.name = @"aaaa";
+    [self didChangeValueForKey:@"name"];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self removeObserver:self forKeyPath:@"name"];
+    [self removeObserver:self forKeyPath:@"age"];
+}
+
++(BOOL)automaticallyNotifiesObserversForKey:(NSString *)key{
+    if([key isEqualToString:@"name"]){
+        return NO;
+    }
+    else{
+        return [super automaticallyNotifiesObserversForKey:key];
+    }
+}
 -(IBAction)btnLoginDataClick:(UIButton *)sender{
     //[self macrodataq:@"vbrq"];
     
@@ -118,9 +190,9 @@
     [self presentViewController:sbvc animated:YES completion:nil];
 }
 
-- (void)willChangeValueForKey:(NSString *)key{
-    NSLog(@"welcome");
-}
+//- (void)willChangeValueForKey:(NSString *)key{
+//    NSLog(@"qwer %@", key);
+//}
 
 -(void)macrodataq:(NSString *)qqqqq{
 #ifdef DEBUG

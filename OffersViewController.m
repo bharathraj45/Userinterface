@@ -48,6 +48,8 @@
     [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
     [self.view insertSubview:backgroundImage atIndex:0];
     
+    self.offersTableViewData.layer.cornerRadius = 8.0f;
+    
 }
 
 //-(void)viewDidAppear:(BOOL)animated{
@@ -134,7 +136,7 @@
     
     int i = 0;
     OffersDataDetail *offersData;
-    while (i < 5) {
+    while (i < 7) {
         if(i ==0){
             offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Port Louis - World of Beaches" andDescription:@"An island with hidden natural jewels and picture perfect vistas, Mauritius is truly an exotic destination. Discover the magical land of Mauritius like never before." andDuration:@"3 days left" andImageDescription:@"Imauritius" andImageSelectionStatus:@"Add"];
         }

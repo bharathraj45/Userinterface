@@ -79,6 +79,8 @@
     //self.view.backgroundColor = UIColorFromRGBWithAlpha(0xE75155, 1.0);
     self.btnSearch.backgroundColor = UIColorFromRGBWithAlpha(0xC1012F, 1.0f);
     
+    self.mapView.showsUserLocation = YES;
+    
     //NSLog(@"%@",self.mapView.userLocation.title);
     [self mapData];
     

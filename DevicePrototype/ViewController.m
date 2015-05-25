@@ -8,9 +8,8 @@
 
 #import "ViewController.h"
 #import "Macros.h"
+#import "UITextField+Util.h"
 
-static void *childContext = &childContext;
-static void *childContext1 = &childContext1;
 @interface ViewController ()
 
 @end
@@ -23,8 +22,6 @@ static void *childContext1 = &childContext1;
 @synthesize btnForgotPassword;
 @synthesize btnLoginAsGuest;
 @synthesize btnRegister;
-@synthesize name;
-@synthesize age;
 
 
 
@@ -36,11 +33,15 @@ static void *childContext1 = &childContext1;
     //self.txtLogin.leftView = (UIView *)image;
     UIView *paddingTxtfieldView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
     paddingTxtfieldView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"User"]];
+    //self.txtLogin textRectForBounds:<#(CGRect)#>
+    self.txtLogin.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
     self.txtLogin.leftView = paddingTxtfieldView;
     self.txtLogin.leftViewMode = UITextFieldViewModeAlways;
     
+    
     UIView *paddingTxtfieldRightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
     paddingTxtfieldRightView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"password"]];
+    self.txtPassword.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
     self.txtPassword.leftView = paddingTxtfieldRightView;
     self.txtPassword.leftViewMode = UITextFieldViewModeAlways;
     
@@ -66,9 +67,7 @@ static void *childContext1 = &childContext1;
     [self.btnRegister setTitleColor:UIColorFromRGBWithAlpha(0xC1012F, 1.0) forState:UIControlStateNormal];
     [self.btnLoginAsGuest setTitleColor:UIColorFromRGBWithAlpha(0xC1012F, 1.0) forState:UIControlStateNormal];
     
-//    [self addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-//    [self addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-
+    
     //self.btnForgotPassword. = UIColorFromRGBWithAlpha(0xC60010, 1.0);
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"mauritius"]];
 //    CAGradientLayer *gradient = [CAGradientLayer layer];2996DD 39A0E0 1D8F66 2C9A74
@@ -76,39 +75,8 @@ static void *childContext1 = &childContext1;
 //    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor blueColor] CGColor], (id)[[UIColor whiteColor] CGColor], nil];
 //    [self.view.layer insertSublayer:gradient atIndex:0];
     //F35343
-//    //C1012F
-    [self setValue:@"qqqq" forKey:@"name"];
-    [self setValue:[NSNumber numberWithUnsignedInt:4] forKey:@"age"];
-    //[someObject.property setText:@"this is a text"];
-    //[self setValue:@"4" forKeyPath:@"name.length"];
-//    NSLog(@"%@", [self valueForKey:@"name"]);
-//    NSLog(@"%@", [self valueForKey:@"age"]);
-    //self.name.length
-//
+    //C1012F
     
-}
-
-//-(void)viewWillAppear:(BOOL)animated{
-//    [super viewWillAppear:animated];
-//    
-//    [self addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-//    [self addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-//}
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    if (context == childContext) {
-        
-    
-    if([keyPath isEqualToString:@"name"]){
-        NSLog(@"the value is changed %@", change);
-    }
-    if([keyPath isEqualToString:@"age"]){
-        NSLog(@"the value is changed %@", change);
-    }
-    }
-    else if (context == childContext1 ){
-        
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -116,25 +84,8 @@ static void *childContext1 = &childContext1;
     // Dispose of any resources that can be recreated.
 }
 
--(void)dealloc{
-    
-}
--(instancetype) init{
-    self = [super init];
-    if (self) {
-        self.name = @"";
-        self.age = 0;
-    }
-    return  self;
-}
-
 -(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:childContext];
-    [self addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:childContext];
-
-    [self setValue:@"qqqq1" forKey:@"name"];
-    [self setValue:[NSNumber numberWithUnsignedInt:5] forKey:@"age"];
+    
     self.txtLogin.layer.cornerRadius = 8.0f;
     self.txtLogin.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.txtLogin.layer.borderWidth = 1.0f;
@@ -146,28 +97,10 @@ static void *childContext1 = &childContext1;
     self.txtPassword.layer.masksToBounds = true;
     
     self.btnLoginData.layer.cornerRadius = 8.0f;
-    
-    [self willChangeValueForKey:@"name"];
-    self.name = @"aaaa";
-    [self didChangeValueForKey:@"name"];
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self removeObserver:self forKeyPath:@"name"];
-    [self removeObserver:self forKeyPath:@"age"];
-}
-
-+(BOOL)automaticallyNotifiesObserversForKey:(NSString *)key{
-    if([key isEqualToString:@"name"]){
-        return NO;
-    }
-    else{
-        return [super automaticallyNotifiesObserversForKey:key];
-    }
-}
 -(IBAction)btnLoginDataClick:(UIButton *)sender{
-    //[self macrodataq:@"vbrq"];
+  
     
     [self displayToInformation];
 //    if(txtLogin.text.length != 0 && txtPassword.text.length != 0 ){
@@ -181,7 +114,8 @@ static void *childContext1 = &childContext1;
 }
 
 -(void)displayToInformation{
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Information" bundle:nil];
+//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Information" bundle:nil];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Dashboard" bundle:nil];
     
     //UIViewController *sbvc = [sb instantiateViewControllerWithIdentifier:@"firstdata"];
     UIViewController *sbvc = [sb instantiateInitialViewController];
@@ -191,7 +125,7 @@ static void *childContext1 = &childContext1;
 }
 
 //- (void)willChangeValueForKey:(NSString *)key{
-//    NSLog(@"qwer %@", key);
+//    NSLog(@"welcome");
 //}
 
 -(void)macrodataq:(NSString *)qqqqq{

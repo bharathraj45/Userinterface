@@ -43,7 +43,8 @@
     self.txtConfirmPassword.leftViewMode = UITextFieldViewModeAlways;
     
     
-    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+//    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+    UIImage* _backGround = [UIImage imageNamed:@"m4"];
     UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
     [backgroundImage setImage:_backGround];
     // choose best mode that works for you

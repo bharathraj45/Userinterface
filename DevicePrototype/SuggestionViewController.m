@@ -38,13 +38,15 @@
     
     
     //self.view.backgroundColor = UIColorFromRGBWithAlpha(0xE75155, 1.0);
-    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+//    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+     UIImage* _backGround = [UIImage imageNamed:@"m4"];
     UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
     [backgroundImage setImage:_backGround];
     // choose best mode that works for you
     [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
     [self.view insertSubview:backgroundImage atIndex:0];
-    self.btnSubmit.backgroundColor = UIColorFromRGBWithAlpha(0xC1012F, 1.0);
+//    self.btnSubmit.backgroundColor = UIColorFromRGBWithAlpha(0x0066CC, 1.0);
+    self.btnSubmit.backgroundColor = UIColorFromRGBWithAlpha(0x075BA1, 1.0);
 }
 
 //-(void)eventData:(UISwipeGestureRecognizer *)sender{
@@ -66,9 +68,12 @@
 }
 
 -(void)viewDataInformationAdded{
-    UIView *paddingFromView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
-    paddingFromView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"down4"]];
-    self.txtChoose.rightView = paddingFromView;
+    UIImageView *imageChooseDatq = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"down4"]];
+    imageChooseDatq.frame = CGRectMake(0.0, 0.0, imageChooseDatq.image.size.width+20.0, imageChooseDatq.image.size.height);
+    imageChooseDatq.contentMode = UIViewContentModeCenter;
+//    UIView *paddingFromView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
+//    paddingFromView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"down4"]];
+    self.txtChoose.rightView = imageChooseDatq;
     self.txtChoose.rightViewMode = UITextFieldViewModeAlways;
 
 }
@@ -85,16 +90,19 @@
     self.txtChoose.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.txtChoose.layer.borderWidth = 1.0f;
     self.txtChoose.layer.masksToBounds = true;
+    self.txtChoose.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
     
     self.txtComments.layer.cornerRadius = 8.0f;
     self.txtComments.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.txtComments.layer.borderWidth = 1.0f;
     self.txtComments.layer.masksToBounds = true;
+    self.txtComments.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
     
     self.txtData.layer.cornerRadius = 8.0f;
     self.txtData.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.txtData.layer.borderWidth = 1.0f;
     self.txtData.layer.masksToBounds = true;
+    self.txtData.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
     
     self.btnSubmit.layer.cornerRadius = 8.0f;
     

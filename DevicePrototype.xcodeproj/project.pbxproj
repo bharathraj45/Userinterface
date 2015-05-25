@@ -17,7 +17,9 @@
 		775641941AF0F48200DA9FE4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775641931AF0F48200DA9FE4 /* MapKit.framework */; };
 		7756419C1AF111DA00DA9FE4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7756419B1AF111DA00DA9FE4 /* CoreLocation.framework */; };
 		7756419F1AF1155E00DA9FE4 /* Annotationq.m in Sources */ = {isa = PBXBuildFile; fileRef = 7756419E1AF1155E00DA9FE4 /* Annotationq.m */; };
+		776560AE1B0256EA00C64BED /* UITextField+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 776560AD1B0256EA00C64BED /* UITextField+Util.m */; };
 		777D2D1F1AF7AA3300498514 /* DemoSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 777D2D1E1AF7AA3300498514 /* DemoSingleton.m */; };
+		7781925A1B13324E0021D473 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778192591B13324E0021D473 /* Dashboard.storyboard */; };
 		77868A7E1AF28AB500F99DA8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77868A7D1AF28AB500F99DA8 /* SWRevealViewController.m */; };
 		77868A801AF28C8100F99DA8 /* Information.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77868A7F1AF28C8100F99DA8 /* Information.storyboard */; };
 		77868A841AF28E3000F99DA8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77868A831AF28E3000F99DA8 /* RootViewController.m */; };
@@ -58,8 +60,11 @@
 		7756419B1AF111DA00DA9FE4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7756419D1AF1155E00DA9FE4 /* Annotationq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotationq.h; sourceTree = "<group>"; };
 		7756419E1AF1155E00DA9FE4 /* Annotationq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotationq.m; sourceTree = "<group>"; };
+		776560AC1B0256EA00C64BED /* UITextField+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Util.h"; sourceTree = "<group>"; };
+		776560AD1B0256EA00C64BED /* UITextField+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Util.m"; sourceTree = "<group>"; };
 		777D2D1D1AF7AA3300498514 /* DemoSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoSingleton.h; sourceTree = "<group>"; };
 		777D2D1E1AF7AA3300498514 /* DemoSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoSingleton.m; sourceTree = "<group>"; };
+		778192591B13324E0021D473 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		77868A7C1AF28AB500F99DA8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		77868A7D1AF28AB500F99DA8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		77868A7F1AF28C8100F99DA8 /* Information.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Information.storyboard; sourceTree = "<group>"; };
@@ -142,6 +147,8 @@
 				772A6CC51AE6AB2A004B0636 /* Images.xcassets */,
 				772A6CC71AE6AB2A004B0636 /* LaunchScreen.xib */,
 				772A6CB81AE6AB2A004B0636 /* Supporting Files */,
+				776560AC1B0256EA00C64BED /* UITextField+Util.h */,
+				776560AD1B0256EA00C64BED /* UITextField+Util.m */,
 			);
 			path = DevicePrototype;
 			sourceTree = "<group>";
@@ -210,6 +217,7 @@
 		77BB8C511AF777A400589873 /* Viewfiles */ = {
 			isa = PBXGroup;
 			children = (
+				778192591B13324E0021D473 /* Dashboard.storyboard */,
 				77C6A2A31AEA5E4B0011DE6D /* Home.storyboard */,
 				772A6CC21AE6AB2A004B0636 /* Main.storyboard */,
 				77EC8BA51AE6B7B70090F94E /* Dataq.storyboard */,
@@ -329,6 +337,7 @@
 				77EC8BA61AE6B7B70090F94E /* Dataq.storyboard in Resources */,
 				77868A801AF28C8100F99DA8 /* Information.storyboard in Resources */,
 				77D0D2821AEA9E7700A3AE52 /* Test.storyboard in Resources */,
+				7781925A1B13324E0021D473 /* Dashboard.storyboard in Resources */,
 				772A6CC61AE6AB2A004B0636 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +354,7 @@
 				7756419F1AF1155E00DA9FE4 /* Annotationq.m in Sources */,
 				779B04EA1AE7E18900D3A039 /* HistoryTableViewCell.m in Sources */,
 				772A6CE41AE6AC21004B0636 /* SignUpViewController.m in Sources */,
+				776560AE1B0256EA00C64BED /* UITextField+Util.m in Sources */,
 				77EC8B9B1AE6B5FC0090F94E /* BookingViewController.m in Sources */,
 				772A6CC11AE6AB2A004B0636 /* ViewController.m in Sources */,
 				77868A871AF28E4900F99DA8 /* FirstViewController.m in Sources */,
@@ -475,7 +485,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Techolution LLC (L5YNYYRY2E)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = DevicePrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = demoapp;
@@ -486,7 +496,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Techolution LLC (L5YNYYRY2E)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = DevicePrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = demoapp;

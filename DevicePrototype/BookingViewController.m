@@ -9,6 +9,8 @@
 #import "BookingViewController.h"
 #import "Macros.h"
 #import "DemoSingleton.h"
+#import "UITextField+Util.h"
+
 
 @interface BookingViewController ()
 
@@ -24,6 +26,9 @@
 @synthesize txtNumberOfPassengers;
 @synthesize btnClear;
 @synthesize btnSearch;
+@synthesize lblPassengers;
+@synthesize lblStart;
+@synthesize lblEnd;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,16 +47,21 @@
     [self.view addGestureRecognizer:swipeGestureRightData];
     
     //self.view.backgroundColor = UIColorFromRGBWithAlpha(0xE75155, 1.0);
-    self.btnSearch.backgroundColor = UIColorFromRGBWithAlpha(0xC1012F, 1.0f);
-    self.btnClear.backgroundColor = UIColorFromRGBWithAlpha(0xC1012F, 1.0);
+    self.btnSearch.backgroundColor = UIColorFromRGBWithAlpha(0x075BA1, 1.0f);
+    self.btnClear.backgroundColor = UIColorFromRGBWithAlpha(0x075BA1, 1.0);
+//    self.btnClear.backgroundColor = UIColorFromRGBWithAlpha(0x0066CC, 1.0);
     //hex data color information 2996DD 39A0E0 1D8F66 2C9A74
     
-    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+//    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+    UIImage* _backGround = [UIImage imageNamed:@"m4"];
     UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
     [backgroundImage setImage:_backGround];
     // choose best mode that works for you
     [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
     [self.view insertSubview:backgroundImage atIndex:0];
+    
+    [self getStartValueq];
+    
     
 }
 
@@ -111,6 +121,7 @@
     self.txtNumberOfPassengers.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.txtNumberOfPassengers.layer.borderWidth = 1.0f;
     self.txtNumberOfPassengers.layer.masksToBounds = true;
+    self.txtNumberOfPassengers.layer.sublayerTransform = CATransform3DMakeTranslation(4, 0, 0);
     
     self.btnSearch.layer.cornerRadius = 8.0f;
     self.btnClear.layer.cornerRadius = 8.0f;
@@ -128,29 +139,51 @@
 */
 
 -(void)addedViewData{
-    UIView *paddingChooseView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
-    paddingChooseView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"electronicdate"]];
-    self.txtDepartingDate.rightView = paddingChooseView;
+    UIImageView *imageDeparting = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"electronicdate"]];
+    imageDeparting.frame = CGRectMake(0.0, 0.0, imageDeparting.image.size.width+20.0, imageDeparting.image.size.height);
+    imageDeparting.contentMode = UIViewContentModeCenter;
+//    UIView *paddingChooseView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
+//    paddingChooseView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"electronicdate"]];
+//    [self.txtDepartingDate editingRectForBounds:txtDepartingDate.bounds];
+    self.txtDepartingDate.layer.sublayerTransform = CATransform3DMakeTranslation(4, 0, 0);
+    self.txtDepartingDate.rightView = imageDeparting;
     self.txtDepartingDate.rightViewMode = UITextFieldViewModeAlways;
     
-    UIView *paddingDateReturningView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
-    paddingDateReturningView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"electronicdate"]];
-    self.txtReturningDate.rightView = paddingDateReturningView;
+    UIImageView *imageReturning = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"electronicdate"]];
+    imageReturning.frame = CGRectMake(0.0, 0.0, imageReturning.image.size.width+20.0, imageReturning.image.size.height);
+    imageReturning.contentMode = UIViewContentModeCenter;
+    self.txtReturningDate.layer.sublayerTransform = CATransform3DMakeTranslation(4, 0, 0);
+//    UIView *paddingDateReturningView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
+//    paddingDateReturningView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"electronicdate"]];
+    self.txtReturningDate.rightView = imageReturning;
     self.txtReturningDate.rightViewMode = UITextFieldViewModeAlways;
     
-    UIView *paddingFromView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
-    paddingFromView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"down4"]];
-    self.txtFromLocation.rightView = paddingFromView;
+    UIImageView *imageFromLocation = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"down4"]];
+    imageFromLocation.frame = CGRectMake(0.0, 0.0, imageFromLocation.image.size.width+10.0, imageFromLocation.image.size.height);
+    imageFromLocation.contentMode = UIViewContentModeCenter;
+    self.txtFromLocation.layer.sublayerTransform = CATransform3DMakeTranslation(4, 0, 0);
+//    UIView *paddingFromView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
+//    paddingFromView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"down4"]];
+    self.txtFromLocation.rightView = imageFromLocation;
     self.txtFromLocation.rightViewMode = UITextFieldViewModeAlways;
     
-    UIView *paddingToDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
-    paddingToDataView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"down4"]];
-    self.txtToLocation.rightView = paddingToDataView;
+    
+    UIImageView *imageTo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"down4"]];
+    imageTo.frame = CGRectMake(0.0, 0.0, imageTo.image.size.width+10.0, imageTo.image.size.height);
+    imageTo.contentMode = UIViewContentModeCenter;
+    self.txtToLocation.layer.sublayerTransform = CATransform3DMakeTranslation(4, 0, 0);
+//    UIView *paddingToDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
+//    paddingToDataView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"down4"]];
+    self.txtToLocation.rightView = imageTo;
     self.txtToLocation.rightViewMode = UITextFieldViewModeAlways;
     
-    UIView *paddingPlanView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
-    paddingPlanView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Plan"]];
-    self.txtClass.rightView = paddingPlanView;
+    UIImageView *imagetxtClass = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"electronicdate"]];
+    imagetxtClass.frame = CGRectMake(0.0, 0.0, imagetxtClass.image.size.width+20.0, imagetxtClass.image.size.height);
+    imagetxtClass.contentMode = UIViewContentModeCenter;
+    self.txtClass.layer.sublayerTransform = CATransform3DMakeTranslation(4, 0, 0);
+//    UIView *paddingPlanView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)]; // what ever you want
+//    paddingPlanView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Plan"]];
+    self.txtClass.rightView = imagetxtClass;
     self.txtClass.rightViewMode = UITextFieldViewModeAlways;
     
     
@@ -163,5 +196,56 @@
 
 -(IBAction)btnLogoutclick:(UIBarButtonItem *)sender;{
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(IBAction)btnIncrementClick:(UIButton *)sender{
+    NSInteger seat = [lblPassengers.text intValue];
+    if(seat >= 0){
+        lblPassengers.text = [NSString stringWithFormat:@"%ld", (long)seat+1];
+    }
+}
+
+-(IBAction)btnDecrementClick:(UIButton *)sender{
+    NSInteger seat = [lblPassengers.text intValue];
+    if(seat >0){
+        lblPassengers.text = [NSString stringWithFormat:@"%ld", (long)seat-1];
+    }
+    else if(seat == 0){
+        
+    }
+}
+
+
+-(void)getStartValueq{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //[dateFormatter setDateFormat:@"EEEE"];
+    [dateFormatter setDateFormat:@"dd   MMMM YYYY \n EEEE"];
+    NSString *start = [dateFormatter stringFromDate:[NSDate date]];
+    //NSLog(@"%@", [dateFormatter stringFromDate:[NSDate date]]);
+    self.lblStart.text = [NSString stringWithFormat:@"%@", start];
+//    self.lblEnd.text = [NSString stringWithFormat:@"%@",start];
+    
+    
+    
+    NSDate *now4 = [NSDate date];
+    int daysToAdd4 = 4;
+    NSDate *newDate1 = [now4 dateByAddingTimeInterval:60*60*24*daysToAdd4];
+    NSString *end = [dateFormatter stringFromDate:newDate1];
+    //NSLog(@"%@", [dateFormatter stringFromDate:newDate1]);
+    self.lblEnd.text = [NSString stringWithFormat:@"%@",end];
+
+//    NSDate *now = [NSDate date];
+//    int daysToAdd = 43;  // or 60 :-)
+//    
+//    // set up date components
+//    NSDateComponents *components = [[NSDateComponents alloc] init];
+//    [components setDay:daysToAdd];
+//    
+//    // create a calendar
+//    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+//    
+//    NSDate *newDate2 = [gregorian dateByAddingComponents:components toDate:now options:0];
+//    NSLog(@"Clean: %@", [dateFormatter stringFromDate:newDate2]);
+   
 }
 @end

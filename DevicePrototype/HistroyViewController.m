@@ -37,6 +37,25 @@
 #define Egypt_LATITUDE  30.0626300
 #define Egypt_LONGITUDE 31.2496700
 
+#define Mascow_LATITUDE 55.7522200
+#define Mascow_Longitude 37.6155600
+
+#define Munich_Latitude 48.1374300
+#define Munich_Longitude 11.5754900
+
+#define Dublin_Latitude 53.3330600
+#define Dublin_LONGITUDE -6.2488900
+
+#define Antwerp_Latitude 51.2198900
+#define Antwerp_Longitude 4.4034600
+
+#define Cairo_Latitude 30.0626300
+#define Cairo_Longitude 31.2496700
+
+
+#define Paris_LATITUDE 48.8534100
+#define Paris_LONGITUDE 2.3488000
+
 
 #define THE_SPAN 84.07f //0.10f
 
@@ -48,7 +67,7 @@
 @synthesize txtEndDate;
 @synthesize txtStartDate;
 @synthesize btnSearch;
-@synthesize mapView;
+@synthesize mapViewDatq;
 @synthesize locationManager;
 
 
@@ -70,7 +89,8 @@
     [self.view addGestureRecognizer:swipeGestureRightData];
     
     
-    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+//    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+    UIImage* _backGround = [UIImage imageNamed:@"m4"];
     UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
     [backgroundImage setImage:_backGround];
     // choose best mode that works for you
@@ -79,15 +99,54 @@
     //self.view.backgroundColor = UIColorFromRGBWithAlpha(0xE75155, 1.0);
     self.btnSearch.backgroundColor = UIColorFromRGBWithAlpha(0xC1012F, 1.0f);
     
-    self.mapView.showsUserLocation = YES;
+    self.mapViewDatq.showsUserLocation = YES;
     
     //NSLog(@"%@",self.mapView.userLocation.title);
     [self mapData];
     
+    //    MKUserTrackingBarButtonItem *buttonItem = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapViewDatq];
+    //    self.navigationItem.rightBarButtonItem = buttonItem;
     
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGestureDatq:)];
+    [self.mapViewDatq addGestureRecognizer:longPressGesture];
 }
 
-
+-(void)handleLongPressGestureDatq:(UIGestureRecognizer *)sender{
+    //this is important if you only want to receive one tap and hold event
+    //    if(sender.state == UIGestureRecognizerStateEnded){
+    //        [self.mapViewDatq removeGestureRecognizer:sender];
+    //    }
+    //    else{
+    //        //here we get the cgpoint for the touch location and convert it in to latitude and longitude coordinates to display on the map
+    //        CGPoint point = [sender locationInView:self.mapViewDatq];
+    //        CLLocationCoordinate2D locCoord = [self.mapViewDatq convertPoint:point toCoordinateFromView:self.mapViewDatq];
+    //        //then all you have to do is create the annotation and add it to the map
+    //        Annotationq *pinq = [[Annotationq alloc] init];
+    ////        dropPin.coordinate.latitude = [NSNumber numberWithDouble:locCoord.latitude];
+    ////        dropPin.coordinate.longitude = [NSNumber numberWithDouble:locCoord.longitude];
+    //        pinq.title = [NSString stringWithFormat:@"WishList"];
+    //        pinq.subtitle = [NSString stringWithFormat:@"Places you considered"];
+    //        pinq.coordinate = locCoord;
+    //
+    //        [self.mapViewDatq addAnnotation:pinq];
+    //
+    //    }
+    
+    
+    //here we get the cgpoint for the touch location and convert it in to latitude and longitude coordinates to display on the map
+    CGPoint point = [sender locationInView:self.mapViewDatq];
+    CLLocationCoordinate2D locCoord = [self.mapViewDatq convertPoint:point toCoordinateFromView:self.mapViewDatq];
+    //then all you have to do is create the annotation and add it to the map
+    Annotationq *pinq = [[Annotationq alloc] init];
+    //        dropPin.coordinate.latitude = [NSNumber numberWithDouble:locCoord.latitude];
+    //        dropPin.coordinate.longitude = [NSNumber numberWithDouble:locCoord.longitude];
+    pinq.title = [NSString stringWithFormat:@"WishList"];
+    pinq.subtitle = [NSString stringWithFormat:@"Places you considered"];
+    pinq.coordinate = locCoord;
+    
+    [self.mapViewDatq addAnnotation:pinq];
+    
+}
 
 -(void)mapData{
     self.locationManager = [[CLLocationManager alloc] init];
@@ -104,10 +163,10 @@
     center.longitude = Egypt_LONGITUDE;
     
     
-//    MKCoordinateSpan span;
-//    span.latitudeDelta=.01;
-//    span.longitudeDelta=.01;
-
+    //    MKCoordinateSpan span;
+    //    span.latitudeDelta=.01;
+    //    span.longitudeDelta=.01;
+    
     //span
     MKCoordinateSpan span;
     span.latitudeDelta = THE_SPAN;
@@ -117,7 +176,7 @@
     myRegionDatq.span = span;
     
     //set our mapview
-    [self.mapView setRegion:myRegionDatq animated:YES];
+    [self.mapViewDatq setRegion:myRegionDatq animated:YES];
     
     
     //Annotation
@@ -139,7 +198,7 @@
     location.latitude = Spain_LATITUDE;
     location.longitude = Spain_LONGITUDE;
     annq.coordinate = location;
-    annq.title = @"Spain";
+    annq.title = @"Barcelona";
     annq.subtitle = @"Smile! You are in Spain!";
     [locations addObject:annq];
     
@@ -151,7 +210,16 @@
     annq.title = @"London";
     annq.subtitle = @"Move your imagination – Come and find your story";
     [locations addObject:annq];
-
+    
+    //France
+    annq = [[Annotationq alloc] init];
+    location.latitude = Paris_LATITUDE;
+    location.longitude = Paris_LONGITUDE;
+    annq.coordinate = location;
+    annq.title = @"Paris";
+    annq.subtitle = @"France";
+    [locations addObject:annq];
+    
     
     //Germany
     annq = [[Annotationq alloc] init];
@@ -161,7 +229,7 @@
     annq.title = @"Germany";
     annq.subtitle = @"The travel destination";
     [locations addObject:annq];
-      //Mumbai
+    //Mumbai
     annq = [[Annotationq alloc] init];
     location.latitude = Mumbai_LATITUDE;
     location.longitude = Mumbai_LONGITUDE;
@@ -170,18 +238,63 @@
     annq.subtitle = @"Incredible !ndia";
     [locations addObject:annq];
     
-//    //Mauritius
-//    annq = [[Annotationq alloc] init];
-//    location.latitude = Mauritius_LATITUDE;
-//    location.longitude = Mauritius_LONGITUDE;
-//    annq.coordinate = location;
-//    annq.title = @"Mauritius";
-//    annq.subtitle = @"World of Beaches";
-//    [locations addObject:annq];
-
+    //Mascow
+    annq = [[Annotationq alloc] init];
+    location.latitude = Mascow_LATITUDE;
+    location.longitude = Mascow_Longitude;
+    annq.coordinate = location;
+    annq.title = @"Mascow";
+    annq.subtitle = @"Russia";
+    [locations addObject:annq];
+    
+    //Munich
+    annq = [[Annotationq alloc] init];
+    location.latitude = Munich_Latitude;
+    location.longitude = Munich_Longitude;
+    annq.coordinate = location;
+    annq.title = @"Munich";
+    annq.subtitle = @"Germany";
+    [locations addObject:annq];
+    
+    //Dublin
+    annq = [[Annotationq alloc] init];
+    location.latitude = Dublin_Latitude;
+    location.longitude = Dublin_LONGITUDE;
+    annq.coordinate = location;
+    annq.title = @"Dublin";
+    annq.subtitle = @"Ireland";
+    [locations addObject:annq];
+    
+    //Antwerp
+    annq = [[Annotationq alloc] init];
+    location.latitude = Antwerp_Latitude;
+    location.longitude = Antwerp_Longitude;
+    annq.coordinate = location;
+    annq.title = @"Antwerp";
+    annq.subtitle = @"Belgium";
+    [locations addObject:annq];
+    
+    //Cairo
+    annq = [[Annotationq alloc] init];
+    location.latitude = Cairo_Latitude;
+    location.longitude = Cairo_Longitude;
+    annq.coordinate = location;
+    annq.title = @"Cairo";
+    annq.subtitle = @"Egypt";
+    [locations addObject:annq];
+    
+    //    //Mauritius
+    //    annq = [[Annotationq alloc] init];
+    //    location.latitude = Mauritius_LATITUDE;
+    //    location.longitude = Mauritius_LONGITUDE;
+    //    annq.coordinate = location;
+    //    annq.title = @"Mauritius";
+    //    annq.subtitle = @"World of Beaches";
+    //    [locations addObject:annq];
     
     
-    [self.mapView addAnnotations:locations];
+    
+    [self.mapViewDatq addAnnotations:locations];
     
     [self drawRoute:locations];
     
@@ -201,7 +314,7 @@
     }
     
     MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordinates count:numberOfSteps];
-    [self.mapView addOverlay:polyLine];
+    [self.mapViewDatq addOverlay:polyLine];
     
     
 }
@@ -334,26 +447,26 @@
     allTableData = [[NSMutableArray alloc] init];
     
     HistoryDateViewInformation *product;
-//    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
-//    
-//    NSInteger day = [components day];
-//    NSInteger month = [components month];
-//    NSInteger year = [components year];
+    //    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    //
+    //    NSInteger day = [components day];
+    //    NSInteger month = [components month];
+    //    NSInteger year = [components year];
     //NSString *strq = [components ]
     
-//    NSDateComponents *components = [[NSCalendar currentCalendar]
-//                                    components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
-//                                    fromDate:[NSDate date]];
-//    NSDate *startDate = [[NSCalendar currentCalendar]
-//                         dateFromComponents:components];
+    //    NSDateComponents *components = [[NSCalendar currentCalendar]
+    //                                    components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+    //                                    fromDate:[NSDate date]];
+    //    NSDate *startDate = [[NSCalendar currentCalendar]
+    //                         dateFromComponents:components];
     //NSString *strq = [NSString stringWithFormat:@"%ld %ld %ld", (long)day, (long)month, (long)year];
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     formatter.dateFormat = @"dd-MM-yyyy";
     NSString *strq = [formatter stringFromDate:[NSDate date]];
-
+    
     for(int i =0; i < 5; i++){
         if(i ==0){
-        product = [[HistoryDateViewInformation alloc] initWithManufacturer:[NSString stringWithFormat:@"%@", strq] andFare:@"12000.00" andFromCity:@"Mauritius" andToCity:@"London"];
+            product = [[HistoryDateViewInformation alloc] initWithManufacturer:[NSString stringWithFormat:@"%@", strq] andFare:@"12000.00" andFromCity:@"Mauritius" andToCity:@"London"];
         }
         else if(i ==1){
             product = [[HistoryDateViewInformation alloc] initWithManufacturer:[NSString stringWithFormat:@"%@", strq] andFare:@"23400.00" andFromCity:@"Mauritius" andToCity:@"Spain"];
@@ -408,10 +521,105 @@
     //MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
     //[self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     //self.mapView.centerCoordinate = userLocation.location.coordinate;
+    //NSLog(@"%@", userLocation);
 }
 
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views{
+    // NSLog(@"%@", views);
+}
+
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
+    //    NSLog(@"firstq");
+    //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info" message:@"This is a test" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    //    [alert show];
+}
+
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    //NSLog(@"firstqqq");
+    //NSLog(@"%@ q %@", view, control);
+    //NSLog(@"%@", view.annotation);
+    //NSLog(@"%@",[view.annotation title]);
+    //[self displayToInformation];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info" message:@"This is a test" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+-(void)displayToInformation{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Home" bundle:nil];
     
+    //UIViewController *sbvc = [sb instantiateViewControllerWithIdentifier:@"firstdata"];
+    UIViewController *sbvc = [sb instantiateInitialViewController];
+    sbvc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self presentViewController:sbvc animated:YES completion:nil];
+}
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    //NSLog(@"%@", annotation);
+    if([annotation isKindOfClass:[MKUserLocation class]]){
+        return nil;
+    }
+    static NSString *cellIndq = @"cellIdentifierDatq";
+    MKAnnotationView *pinq = nil;
+    //MKPinAnnotationView *pinq = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:cellIndq];
+    //MKAnnotationView *vieq = [[MKAnnotationView alloc] init];
+    //return vieq;
+    
+    if(!pinq){
+        pinq = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:cellIndq];
+        pinq.canShowCallout = YES;
+        if([[annotation title] isEqualToString:@"Mauritius"] || [[annotation title] isEqualToString:@"Barcelona"] || [[annotation title] isEqualToString:@"London"]|| [[annotation title] isEqualToString:@"Germany"] || [[annotation title] isEqualToString:@"Mumbai"] || [[annotation title] isEqualToString:@"Paris"]){
+            //pinq.pinColor = MKPinAnnotationColorGreen;
+            pinq.image = [UIImage imageNamed:@"pgreyq4"];
+            
+            //pinq.opaque = YES;
+            pinq.calloutOffset = CGPointMake(0,4);
+            pinq.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        }
+        else if([[annotation title] isEqualToString:@"WishList"]){
+            pinq.image = [UIImage imageNamed:@"pblueq"];
+            
+            //pinq.opaque = YES;
+            pinq.calloutOffset = CGPointMake(0,4);
+            pinq.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            
+        }
+        else{
+            //pinq.pinColor = MKPinAnnotationColorPurple; //(MKPinAnnotationColor)[UIColor blueColor];
+            //pinq.pinColor = MKPinAnnotationColorPurple;
+            //pinq.backgroundColor = [UIColor yellowColor];
+            //            pinq.image = [UIImage imageNamed:@"pblue"];
+            pinq.image = [UIImage imageNamed:@"pgreenq"];
+            //pinq.opaque = YES;
+            pinq.calloutOffset = CGPointMake(0,4);
+            pinq.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        }
+        //        pinq.pinColor = MKPinAnnotationColorGreen;
+        //pinq.animatesDrop = YES;
+    }
+    
+    //    MKPinAnnotationView *pinq = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:cellIndq];
+    //    //MKAnnotationView *vieq = [[MKAnnotationView alloc] init];
+    //    //return vieq;
+    //
+    //    if(!pinq){
+    //        pinq = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:cellIndq];
+    //        pinq.canShowCallout = YES;
+    //        if([[annotation title] isEqualToString:@"Mauritius"] || [[annotation title] isEqualToString:@"Spain"] || [[annotation title] isEqualToString:@"London"]|| [[annotation title] isEqualToString:@"Germany"] || [[annotation title] isEqualToString:@"Mumbai"]){
+    //            pinq.pinColor = MKPinAnnotationColorGreen;
+    //            pinq.image = [UIImage imageNamed:@"Select"];
+    //            pinq.opaque = NO;
+    //        }
+    //        else{
+    //            //pinq.pinColor = MKPinAnnotationColorPurple; //(MKPinAnnotationColor)[UIColor blueColor];
+    //            pinq.pinColor = MKPinAnnotationColorPurple;
+    //            //pinq.backgroundColor = [UIColor yellowColor];
+    //            pinq.image = [UIImage imageNamed:@"Select"];
+    //            pinq.opaque = NO;
+    //        }
+    ////        pinq.pinColor = MKPinAnnotationColorGreen;
+    //        pinq.animatesDrop = YES;
+    //    }
+    return pinq;
 }
 
 
@@ -419,13 +627,13 @@
     
     switch (sender.selectedSegmentIndex) {
         case 0:
-            self.mapView.mapType = MKMapTypeStandard;
+            self.mapViewDatq.mapType = MKMapTypeStandard;
             break;
         case 1:
-            self.mapView.mapType = MKMapTypeSatellite;
+            self.mapViewDatq.mapType = MKMapTypeSatellite;
             break;
         case 2:
-            self.mapView.mapType = MKMapTypeHybrid;
+            self.mapViewDatq.mapType = MKMapTypeHybrid;
             break;
         default:
             break;
@@ -433,58 +641,59 @@
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
-//    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
-//    
-//    CLLocationCoordinate2D center;
-//    center.latitude = Mumbai_LATITUDE;
-//    center.longitude = Mumbai_LONGITUDE;
-//    MKPlacemark *place = [[MKPlacemark alloc]
-//                          initWithCoordinate:center
-//                          addressDictionary:nil];
-//    
-//    MKMapItem *mapItem =
-//    [[MKMapItem alloc]initWithPlacemark:place];
-//    
-//    [request setSource:[MKMapItem mapItemForCurrentLocation]];
-//    [request setDestination:mapItem];
-//    [request setTransportType:MKDirectionsTransportTypeAny]; // This can be limited to automobile and walking directions.
-//    [request setRequestsAlternateRoutes:YES]; // Gives you several route options.
-//    MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
-//    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
-//        if (!error) {
-////            for (MKRoute *route in [response routes]) {
-////                [self.mapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads]; // Draws the route above roads, but below labels.
-////                // You can also get turn-by-turn steps, distance, advisory notices, ETA, etc by accessing various route properties.
-////            }
-//            [self showRoute:response];
-//        }
-//        else{
-//            NSLog(@"%@", error);
-//        }
-//    }];
+    //    NSLog(@"%@", [overlay title]);
+    //    if([[overlay title] isEqualToString:@"Mauritius"]){
+    //        NSLog(@"%@", [overlay title]);
+    //    }
+    // NSLog(@"%@",)
+    //    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+    //
+    //    CLLocationCoordinate2D center;
+    //    center.latitude = Mumbai_LATITUDE;
+    //    center.longitude = Mumbai_LONGITUDE;
+    //    MKPlacemark *place = [[MKPlacemark alloc]
+    //                          initWithCoordinate:center
+    //                          addressDictionary:nil];
+    //
+    //    MKMapItem *mapItem =
+    //    [[MKMapItem alloc]initWithPlacemark:place];
+    //
+    //    [request setSource:[MKMapItem mapItemForCurrentLocation]];
+    //    [request setDestination:mapItem];
+    //    [request setTransportType:MKDirectionsTransportTypeAny]; // This can be limited to automobile and walking directions.
+    //    [request setRequestsAlternateRoutes:YES]; // Gives you several route options.
+    //    MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
+    //    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+    //        if (!error) {
+    ////            for (MKRoute *route in [response routes]) {
+    ////                [self.mapView addOverlay:[route polyline] level:MKOverlayLevelAboveRoads]; // Draws the route above roads, but below labels.
+    ////                // You can also get turn-by-turn steps, distance, advisory notices, ETA, etc by accessing various route properties.
+    ////            }
+    //            [self showRoute:response];
+    //        }
+    //        else{
+    //            NSLog(@"%@", error);
+    //        }
+    //    }];
     
     if ([overlay isKindOfClass:[MKPolyline class]]) {
-        MKPolyline *route = overlay;
-        MKPolylineRenderer *routeRenderer = [[MKPolylineRenderer alloc] initWithPolyline:route];
-        routeRenderer.strokeColor = [UIColor blueColor];
-        routeRenderer.lineWidth = 4.3f;
-        routeRenderer.fillColor = [UIColor yellowColor];
-        
-        
-        
-        
-        
-        return routeRenderer;
+        //        MKPolyline *route = overlay;
+        //        MKPolylineRenderer *routeRenderer = [[MKPolylineRenderer alloc] initWithPolyline:route];
+        //        routeRenderer.strokeColor = [UIColor blueColor];
+        //        routeRenderer.lineWidth = 4.3f;
+        //        routeRenderer.fillColor = [UIColor yellowColor];
+        //        return routeRenderer;
+        return  nil;
     }
-    
-    
-    else return nil;
+    else{
+        return nil;
+    }
 }
 -(void)showRoute:(MKDirectionsResponse *)response
 {
     for (MKRoute *route in response.routes)
     {
-        [self.mapView
+        [self.mapViewDatq
          addOverlay:route.polyline level:MKOverlayLevelAboveRoads];
     }
 }

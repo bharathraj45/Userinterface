@@ -25,6 +25,7 @@
 @synthesize airportView;
 @synthesize infoView;
 @synthesize offersView;
+@synthesize upcomingView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,18 +41,22 @@
     
     self.navigationItem.title = [NSString stringWithFormat:@"Air Mauritius"];
     
-    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+//    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+    UIImage* _backGround = [UIImage imageNamed:@"m4"];
+    
     UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
     [backgroundImage setImage:_backGround];
     // choose best mode that works for you
     [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
     [self.view insertSubview:backgroundImage atIndex:0];
-    self.flightBookingView.backgroundColor = UIColorFromRGBWithAlpha(0x58C86B, 1.0f);
-    self.flightStatusDataView.backgroundColor = UIColorFromRGBWithAlpha(0xB8BF5E, 1.0f);
-    self.airportView.backgroundColor = UIColorFromRGBWithAlpha(0x6E6CFA, 1.0f);
-    self.checkingView.backgroundColor = UIColorFromRGBWithAlpha(0xE68181, 1.0f);
+    self.flightBookingView.backgroundColor = UIColorFromRGBWithAlpha(0x0066CC, 1.0f);
+    self.flightStatusDataView.backgroundColor = UIColorFromRGBWithAlpha(0xD26E03, 1.0f);
+    self.airportView.backgroundColor = UIColorFromRGBWithAlpha(0x6B8E23, 1.0f);
+    self.checkingView.backgroundColor = UIColorFromRGBWithAlpha(0xDB7093, 1.0f);
     self.infoView.backgroundColor = UIColorFromRGBWithAlpha(0xE29F3F, 1.0f);//0x2E8B57  0x808000
-    self.offersView.backgroundColor = UIColorFromRGBWithAlpha(0x4BCFE9, 1.0f);
+    self.offersView.backgroundColor = UIColorFromRGBWithAlpha(0x6633CC, 1.0f);
+    //self.upcomingView.backgroundColor = UIColorFromRGBWithAlpha(0x191970, 1.0f);
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Airmauritiuslogodata"]];
     
     
 }
@@ -119,10 +124,11 @@
         demoSingleton.selectedIndexForDisplay = 0;
         [self displayFlightDataInformation];
     }
-    
-    
-    
-    
+    else if(CGRectContainsPoint(self.upcomingView.frame, location)){
+        demoSingleton.selectedIndexForDisplay = 2;
+        [self displayFlightDataInformation];
+    }
+
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{

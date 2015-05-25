@@ -16,11 +16,16 @@
 @property (nonatomic, weak) IBOutlet UITextField *txtReturningDate;
 @property (nonatomic, weak) IBOutlet UITextField *txtClass;
 @property (nonatomic, weak) IBOutlet UITextField *txtNumberOfPassengers;
+@property (nonatomic, weak) IBOutlet UILabel *lblPassengers;
+@property (nonatomic, weak) IBOutlet UILabel *lblStart;
+@property (nonatomic, weak) IBOutlet UILabel *lblEnd;
 
 @property (nonatomic, weak) IBOutlet UIButton *btnSearch;
 @property (nonatomic, weak) IBOutlet UIButton *btnClear;
 
 
 -(IBAction)btnLogoutclick:(UIBarButtonItem *)sender;
+-(IBAction)btnIncrementClick:(UIButton *)sender;
+-(IBAction)btnDecrementClick:(UIButton *)sender;
 
 @end

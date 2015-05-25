@@ -10,7 +10,7 @@
 
 @interface RootViewController : UIViewController
 
-@property(weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonLogOut;
 @property (weak, nonatomic) IBOutlet UIView *flightStatusDataView;
 @property (weak, nonatomic) IBOutlet UIView *airportView;
@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIView *checkingView;
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet UIView *offersView;
+@property (weak, nonatomic) IBOutlet UIView *upcomingView;
 
 -(IBAction)btnLogoutclick:(UIBarButtonItem *)sender;
 

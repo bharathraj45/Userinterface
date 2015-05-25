@@ -28,7 +28,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    menu = @[@"one", @"two", @"three", @"four"];
+    menu = @[@"one", @"two", @"three", @"four", @"five"];
     self.displayTableViewData.backgroundColor = UIColorFromRGBWithAlpha(0xFFC57A, 1.0);
 }
 

@@ -19,7 +19,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *btnSearch;
 
 
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet MKMapView *mapViewDatq;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
 -(IBAction)btnLogoutclick:(UIBarButtonItem *)sender;

@@ -41,7 +41,8 @@
     
     
     //self.view.backgroundColor = UIColorFromRGBWithAlpha(0xE75155, 1.0);
-    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+//    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
+    UIImage* _backGround = [UIImage imageNamed:@"m4"];
     UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
     [backgroundImage setImage:_backGround];
     // choose best mode that works for you
@@ -134,23 +135,23 @@
     
     allTableDataOffers = [[NSMutableArray alloc] init];
     
-    int i = 0;
+    NSInteger i = 0;
     OffersDataDetail *offersData;
     while (i < 7) {
         if(i ==0){
             offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Port Louis - World of Beaches" andDescription:@"An island with hidden natural jewels and picture perfect vistas, Mauritius is truly an exotic destination. Discover the magical land of Mauritius like never before." andDuration:@"3 days left" andImageDescription:@"Imauritius" andImageSelectionStatus:@"Add"];
         }
         else if(i ==1){
-           offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"London - Move your imagination" andDescription:@"The capital city of London is simply a dream destination for sightseers, and within almost every district there are some exceptional tourist attractions to savour." andDuration:@"4 days left" andImageDescription:@"Ilondon" andImageSelectionStatus:@"Select"];
+           offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"London - Move your imagination" andDescription:@"The capital city of London is simply a dream destination for sightseers, and within almost every district there are some exceptional tourist attractions to savour." andDuration:@"4 days left" andImageDescription:@"Ilondon" andImageSelectionStatus:@"Ocheck3"];
         }
         else if(i == 2){
             offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Berlin - The travel destination" andDescription:@"Berlin tends to be gray and cold; it can be warm and beautiful in summer but there's no guarantee, so it's best to always pack a jacket." andDuration:@"7 days left" andImageDescription:@"Iberlin" andImageSelectionStatus:@"Add"];
         }
         else if(i == 3){
-            offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Newyork - The city that never sleeps" andDescription:@"New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers." andDuration:@"8 days left" andImageDescription:@"Inewyork" andImageSelectionStatus:@"Select"];
+            offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Newyork - The city that never sleeps" andDescription:@"New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers." andDuration:@"8 days left" andImageDescription:@"Inewyork" andImageSelectionStatus:@"Ocheck3"];
         }
         else{
-            offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Paris - The city of light" andDescription:@"Paris is the city of love, inspiration, art and fashion. The night scene, the Eiffel tower and the warm atmosphere will make you feel directly at home. A trip to Paris is the perfect get-away." andDuration:@"10 days left" andImageDescription:@"Iparis" andImageSelectionStatus:@"Select"];
+            offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Paris - The city of light" andDescription:@"Paris is the city of love, inspiration, art and fashion. The night scene, the Eiffel tower and the warm atmosphere will make you feel directly at home. A trip to Paris is the perfect get-away." andDuration:@"10 days left" andImageDescription:@"Iparis" andImageSelectionStatus:@"Ocheck3"];
         }
         
         [allTableDataOffers addObject:offersData];

@@ -54,6 +54,7 @@
 //    
 //    UIGraphicsEndImageContext();
     
+    
     UIImage* _backGround = [UIImage imageNamed:@"m4"];
     UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
     [backgroundImage setImage:_backGround];
@@ -86,17 +87,17 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
-    self.txtLogin.layer.cornerRadius = 8.0f;
+    self.txtLogin.layer.cornerRadius = 2.0f;
     self.txtLogin.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.txtLogin.layer.borderWidth = 1.0f;
     self.txtLogin.layer.masksToBounds = true;
     
-    self.txtPassword.layer.cornerRadius = 8.0f;
+    self.txtPassword.layer.cornerRadius = 2.0f;
     self.txtPassword.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.txtPassword.layer.borderWidth = 1.0f;
     self.txtPassword.layer.masksToBounds = true;
     
-    self.btnLoginData.layer.cornerRadius = 8.0f;
+    self.btnLoginData.layer.cornerRadius = 2.0f;
 }
 
 -(IBAction)btnLoginDataClick:(UIButton *)sender{

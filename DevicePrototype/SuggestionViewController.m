@@ -19,6 +19,7 @@
 @synthesize txtChoose;
 @synthesize txtComments;
 @synthesize txtData;
+@synthesize btnProvideFeedback;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,7 +48,21 @@
     [self.view insertSubview:backgroundImage atIndex:0];
 //    self.btnSubmit.backgroundColor = UIColorFromRGBWithAlpha(0x0066CC, 1.0);
     self.btnSubmit.backgroundColor = UIColorFromRGBWithAlpha(0x075BA1, 1.0);
+    
+    self.rateView.notSelectedImage = [UIImage imageNamed:@"star"];
+    self.rateView.halfSelectedImage = [UIImage imageNamed:@"star2"];
+    self.rateView.fullSelectedImage = [UIImage imageNamed:@"star2"];
+    self.rateView.rating = 0;
+    self.rateView.editable = YES;
+    self.rateView.maxRating = 5;
+    self.rateView.delegate = self;
 }
+
+// Add to bottom
+- (void)rateView:(RateView *)rateView ratingDidChange:(float)rating {
+    self.statusLabel.text = [NSString stringWithFormat:@"Rating: %f", rating];
+}
+
 
 //-(void)eventData:(UISwipeGestureRecognizer *)sender{
 //    NSUInteger numberoftouchesdata = sender.numberOfTouches;
@@ -62,7 +77,7 @@
     NSUInteger numberoftouchesdata = sender.numberOfTouches;
     if(numberoftouchesdata == 1){
         if(sender.state == UIGestureRecognizerStateEnded){
-            self.tabBarController.selectedIndex = 2;
+            self.tabBarController.selectedIndex = 3;
         }
     }
 }
@@ -122,5 +137,48 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(IBAction)btnProvideFeedbackClick:(UIButton *)sender;{
+//    UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"Love using Air Mauritius services?" delegate:self cancelButtonTitle:@"No, thanks" destructiveButtonTitle:nil otherButtonTitles:@"Rate now", @"Ask me later", nil];
+////    [actionsheet setTintColor:[UIColor greenColor]];
+////    actionsheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+////    [[actionsheet layer] setBackgroundColor:[UIColor greenColor].CGColor];
+//    [actionsheet showInView:btnProvideFeedback];
+//    //[actionsheet showFromTabBar:self.tabBarController.view];
+    
+//    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Feedback" message:@"Love using Air Mauritius services?" preferredStyle:UIAlertControllerStyleActionSheet];
+//    UIAlertAction *alert = [UIAlertAction actionWithTitle:@"Rate now" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//        
+//        [controller dismissViewControllerAnimated:YES completion:nil];
+//    }];
+//    
+//    UIAlertAction *alert2 = [UIAlertAction actionWithTitle:@"Ask me later" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//        
+//        [controller dismissViewControllerAnimated:YES completion:nil];
+//    }];
+//    UIAlertAction *alert3 = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//        
+//        [controller dismissViewControllerAnimated:YES completion:nil];
+//    }];
+//    [controller addAction:alert3];
+//    [controller addAction:alert];
+//    [controller addAction:alert2];
+//    
+//    
+//    
+//    [self presentViewController:controller animated:YES completion:nil];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Rating" bundle:nil];
+    
+    //UIViewController *sbvc = [sb instantiateViewControllerWithIdentifier:@"firstdata"];
+    UIViewController *sbvc = [sb instantiateInitialViewController];
+    sbvc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    [self presentViewController:sbvc animated:YES completion:nil];
+    
+}
 
+-(void)willPresentActionSheet:(UIActionSheet *)actionSheet{
+    [actionSheet setTintColor:[UIColor greenColor]];
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [[actionSheet layer] setBackgroundColor:[UIColor greenColor].CGColor];
+}
 @end

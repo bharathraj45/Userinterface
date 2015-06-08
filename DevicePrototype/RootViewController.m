@@ -26,6 +26,7 @@
 @synthesize infoView;
 @synthesize offersView;
 @synthesize upcomingView;
+@synthesize lblUpcomingData;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,14 +50,22 @@
     // choose best mode that works for you
     [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
     [self.view insertSubview:backgroundImage atIndex:0];
-    self.flightBookingView.backgroundColor = UIColorFromRGBWithAlpha(0x0066CC, 1.0f);
-    self.flightStatusDataView.backgroundColor = UIColorFromRGBWithAlpha(0xD26E03, 1.0f);
-    self.airportView.backgroundColor = UIColorFromRGBWithAlpha(0x6B8E23, 1.0f);
-    self.checkingView.backgroundColor = UIColorFromRGBWithAlpha(0xDB7093, 1.0f);
+    self.flightBookingView.backgroundColor = UIColorFromRGBWithAlpha(0x2583CC, 1.0f);
+    self.flightStatusDataView.backgroundColor = UIColorFromRGBWithAlpha(0xE5BB1C, 1.0f);
+    self.airportView.backgroundColor = UIColorFromRGBWithAlpha(0x39401C, 1.0f);
+    self.checkingView.backgroundColor = UIColorFromRGBWithAlpha(0xFF6905, 1.0f);
     self.infoView.backgroundColor = UIColorFromRGBWithAlpha(0xE29F3F, 1.0f);//0x2E8B57  0x808000
-    self.offersView.backgroundColor = UIColorFromRGBWithAlpha(0x6633CC, 1.0f);
-    //self.upcomingView.backgroundColor = UIColorFromRGBWithAlpha(0x191970, 1.0f);
+    self.offersView.backgroundColor = UIColorFromRGBWithAlpha(0x7E417F, 1.0f);
+    self.upcomingView.backgroundColor = UIColorFromRGBWithAlpha(0x37B247, 1.0f);
+    
+    self.flightBookingView.layer.cornerRadius = 2.0f;
+    self.flightStatusDataView.layer.cornerRadius = 2.0f;
+    self.airportView.layer.cornerRadius = 2.0f;
+    self.checkingView.layer.cornerRadius = 2.0f;
+    self.offersView.layer.cornerRadius = 2.0f;
+    self.upcomingView.layer.cornerRadius = 2.0f;
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Airmauritiuslogodata"]];
+    [self upcomingTripData];
     
     
 }
@@ -75,6 +84,20 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void)upcomingTripData{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //[dateFormatter setDateFormat:@"EEEE"];
+    [dateFormatter setDateFormat:@"dd MMMM YYYY EEEE"];
+    NSDate *now4 = [NSDate date];
+    int daysToAdd4 = 4;
+    NSDate *newDate1 = [now4 dateByAddingTimeInterval:60*60*24*daysToAdd4];
+    NSString *date = [dateFormatter stringFromDate:newDate1];
+    //NSLog(@"%@", [dateFormatter stringFromDate:newDate1]);
+
+    
+    lblUpcomingData.text = [NSString stringWithFormat:@"James, your upcoming trip is for Wellington and scheduled on %@. Tap to find more details...",date];
+}
 
 -(IBAction)btnLogoutclick:(UIBarButtonItem *)sender;{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -102,31 +125,31 @@
     if(CGRectContainsPoint(self.flightStatusDataView.frame, location)){
         //NSLog(@"flig");
         demoSingleton.selectedIndexForDisplay = 2;
-        [self displayFlightDataInformation];
+        [self displayFlightDataInformation:@"Test"];
     }
     
     else if(CGRectContainsPoint(self.flightBookingView.frame, location)){
         //NSLog(@"flig");
         demoSingleton.selectedIndexForDisplay = 1;
-        [self displayFlightDataInformation];
+        [self displayFlightDataInformation:@"Test"];
     }
     else if(CGRectContainsPoint(self.checkingView.frame, location)){
         //NSLog(@"flig");
-        demoSingleton.selectedIndexForDisplay = 3;
-        [self displayFlightDataInformation];
+        demoSingleton.selectedIndexForDisplay = 4;
+        [self displayFlightDataInformation:@"Test"];
     }
     else if(CGRectContainsPoint(self.airportView.frame, location)){
         //NSLog(@"flig");
         demoSingleton.selectedIndexForDisplay = 2;
-        [self displayFlightDataInformation];
+        [self displayFlightDataInformation:@"Test"];
     }
     else if(CGRectContainsPoint(self.offersView.frame, location)){
         demoSingleton.selectedIndexForDisplay = 0;
-        [self displayFlightDataInformation];
+        [self displayFlightDataInformation:@"Test"];
     }
     else if(CGRectContainsPoint(self.upcomingView.frame, location)){
-        demoSingleton.selectedIndexForDisplay = 2;
-        [self displayFlightDataInformation];
+        demoSingleton.selectedIndexForDisplay = 3;
+        [self displayFlightDataInformation:@"Test"];
     }
 
 }
@@ -135,8 +158,8 @@
     
 }
 
--(void)displayFlightDataInformation{
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Test" bundle:nil];
+-(void)displayFlightDataInformation:(NSString *)name{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:name bundle:nil];
     
     //UIViewController *sbvc = [sb instantiateViewControllerWithIdentifier:@"firstdata"];
     UIViewController *sbvc = [sb instantiateInitialViewController];

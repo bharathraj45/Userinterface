@@ -69,6 +69,7 @@
 @synthesize btnSearch;
 @synthesize mapViewDatq;
 @synthesize locationManager;
+@synthesize searchMapView;
 
 
 - (void)viewDidLoad {
@@ -89,13 +90,14 @@
     [self.view addGestureRecognizer:swipeGestureRightData];
     
     
+    
 //    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
-    UIImage* _backGround = [UIImage imageNamed:@"m4"];
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
-    [backgroundImage setImage:_backGround];
-    // choose best mode that works for you
-    [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
-    [self.view insertSubview:backgroundImage atIndex:0];
+//    UIImage* _backGround = [UIImage imageNamed:@"m4"];
+//    UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
+//    [backgroundImage setImage:_backGround];
+//    // choose best mode that works for you
+//    [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
+//    [self.view insertSubview:backgroundImage atIndex:0];
     //self.view.backgroundColor = UIColorFromRGBWithAlpha(0xE75155, 1.0);
     self.btnSearch.backgroundColor = UIColorFromRGBWithAlpha(0xC1012F, 1.0f);
     
@@ -190,7 +192,8 @@
     location.longitude = Mauritius_LONGITUDE;
     annq.coordinate = location;
     annq.title = @"Mauritius";
-    annq.subtitle = @"World of Beaches";
+//    annq.subtitle = @"World of Beaches";
+    annq.subtitle = @"You have visited this place.";
     [locations addObject:annq];
     
     //Spain
@@ -698,4 +701,64 @@
     }
 }
 
+
+#pragma - search bar delegate methods
+
+//- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+//    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+//    
+//    [geoCoder geocodeAddressString:searchBar.text completionHandler:^(NSArray *placemarks, NSError *error) {
+//        
+//        if(!error){
+//            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+//            MKCoordinateRegion region;
+//            region.center.latitude = placemark.region.center.latitude;
+//            region.center.longitude = placemark.region.center.longitude;
+//            MKCoordinateSpan span;
+//            double radius = placemark.region.radius/1000; //convert to kilometers
+//            
+//            NSLog(@"search bar button clicked %f", radius);
+//            span.latitudeDelta = radius/112.0;
+//            region.span = span;
+//            [self.mapViewDatq setRegion:region animated:YES];
+//        }
+//        else{
+//            
+//        }
+//    }];
+//}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder geocodeAddressString:searchBar.text completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        if(!error){
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            
+            
+            MKCoordinateRegion region;
+            region.center = [(CLCircularRegion *)placemark.region center];
+//            region.center.latitude = placemark.region.center.latitude;
+//            region.center.longitude = placemark.region.center.longitude;
+            MKCoordinateSpan span;
+            double radius = [(CLCircularRegion *)placemark.region radius]/1000; //convert to kilometers
+            
+            //NSLog(@"search bar button clicked %f", radius);
+            span.latitudeDelta = radius/112.0;
+            region.span = span;
+//            MKPlacemark *placemarkm = [[MKPlacemark alloc] initWithPlacemark:placemark];//[placemarks objectAtIndex:0];
+//            [self.mapViewDatq addAnnotation:placemarkm];
+            
+            [self.mapViewDatq setRegion:region animated:YES];
+        }
+        else{
+            
+        }
+    }];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.mapViewDatq endEditing: YES];
+    [self.searchMapView resignFirstResponder];
+}
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface HistroyViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
+@interface HistroyViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *historyTableView;
 
@@ -17,6 +17,7 @@
 @property (nonatomic, weak) IBOutlet UITextField *txtStartDate;
 @property (nonatomic, weak) IBOutlet UITextField *txtEndDate;
 @property (nonatomic, weak) IBOutlet UIButton *btnSearch;
+@property (nonatomic, weak) IBOutlet UISearchBar *searchMapView;
 
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapViewDatq;

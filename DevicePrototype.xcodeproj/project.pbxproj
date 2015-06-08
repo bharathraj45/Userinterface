@@ -26,6 +26,8 @@
 		77868A871AF28E4900F99DA8 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77868A861AF28E4900F99DA8 /* FirstViewController.m */; };
 		77868A8A1AF28E7400F99DA8 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77868A891AF28E7400F99DA8 /* SecondViewController.m */; };
 		77868A8D1AF290CE00F99DA8 /* DataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77868A8C1AF290CE00F99DA8 /* DataTableViewController.m */; };
+		7799034D1B187FDC00014958 /* Upcomingtripdatq.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7799034C1B187FDC00014958 /* Upcomingtripdatq.storyboard */; };
+		779903501B18805000014958 /* UpcomingdatqViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7799034F1B18805000014958 /* UpcomingdatqViewController.m */; };
 		779B04EA1AE7E18900D3A039 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 779B04E91AE7E18900D3A039 /* HistoryTableViewCell.m */; };
 		779B04ED1AE7E25F00D3A039 /* HistoryDateViewInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 779B04EC1AE7E25F00D3A039 /* HistoryDateViewInformation.m */; };
 		779B04EF1AE7E71F00D3A039 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 779B04EE1AE7E71F00D3A039 /* QuartzCore.framework */; };
@@ -39,6 +41,9 @@
 		77EC8BA11AE6B61E0090F94E /* OffersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EC8BA01AE6B61E0090F94E /* OffersViewController.m */; };
 		77EC8BA41AE6B62D0090F94E /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EC8BA31AE6B62D0090F94E /* SuggestionViewController.m */; };
 		77EC8BA61AE6B7B70090F94E /* Dataq.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77EC8BA51AE6B7B70090F94E /* Dataq.storyboard */; };
+		77F71E411B219A720054400D /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F71E401B219A720054400D /* RateView.m */; };
+		77F71E451B21A9DE0054400D /* Rating.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77F71E441B21A9DE0054400D /* Rating.storyboard */; };
+		77F71E7D1B21EAC80054400D /* RatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F71E7C1B21EAC80054400D /* RatingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +81,9 @@
 		77868A891AF28E7400F99DA8 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		77868A8B1AF290CE00F99DA8 /* DataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataTableViewController.h; sourceTree = "<group>"; };
 		77868A8C1AF290CE00F99DA8 /* DataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataTableViewController.m; sourceTree = "<group>"; };
+		7799034C1B187FDC00014958 /* Upcomingtripdatq.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Upcomingtripdatq.storyboard; sourceTree = "<group>"; };
+		7799034E1B18805000014958 /* UpcomingdatqViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpcomingdatqViewController.h; sourceTree = "<group>"; };
+		7799034F1B18805000014958 /* UpcomingdatqViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingdatqViewController.m; sourceTree = "<group>"; };
 		779B04E81AE7E18900D3A039 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
 		779B04E91AE7E18900D3A039 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		779B04EB1AE7E25F00D3A039 /* HistoryDateViewInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryDateViewInformation.h; sourceTree = "<group>"; };
@@ -98,6 +106,11 @@
 		77EC8BA21AE6B62D0090F94E /* SuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionViewController.h; sourceTree = "<group>"; };
 		77EC8BA31AE6B62D0090F94E /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		77EC8BA51AE6B7B70090F94E /* Dataq.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dataq.storyboard; sourceTree = "<group>"; };
+		77F71E3F1B219A720054400D /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
+		77F71E401B219A720054400D /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
+		77F71E441B21A9DE0054400D /* Rating.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rating.storyboard; sourceTree = "<group>"; };
+		77F71E7B1B21EAC80054400D /* RatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingViewController.h; sourceTree = "<group>"; };
+		77F71E7C1B21EAC80054400D /* RatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +195,8 @@
 		772A6CDE1AE6ABFB004B0636 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				7799034E1B18805000014958 /* UpcomingdatqViewController.h */,
+				7799034F1B18805000014958 /* UpcomingdatqViewController.m */,
 				772A6CBF1AE6AB2A004B0636 /* ViewController.h */,
 				772A6CC01AE6AB2A004B0636 /* ViewController.m */,
 				772A6CE21AE6AC21004B0636 /* SignUpViewController.h */,
@@ -224,6 +239,12 @@
 				77C6A2A51AEA6D1C0011DE6D /* Data.storyboard */,
 				77D0D2811AEA9E7700A3AE52 /* Test.storyboard */,
 				77868A7F1AF28C8100F99DA8 /* Information.storyboard */,
+				7799034C1B187FDC00014958 /* Upcomingtripdatq.storyboard */,
+				77F71E3F1B219A720054400D /* RateView.h */,
+				77F71E401B219A720054400D /* RateView.m */,
+				77F71E7B1B21EAC80054400D /* RatingViewController.h */,
+				77F71E7C1B21EAC80054400D /* RatingViewController.m */,
+				77F71E441B21A9DE0054400D /* Rating.storyboard */,
 			);
 			name = Viewfiles;
 			sourceTree = "<group>";
@@ -335,8 +356,10 @@
 				77C6A2A41AEA5E4B0011DE6D /* Home.storyboard in Resources */,
 				772A6CC91AE6AB2A004B0636 /* LaunchScreen.xib in Resources */,
 				77EC8BA61AE6B7B70090F94E /* Dataq.storyboard in Resources */,
+				77F71E451B21A9DE0054400D /* Rating.storyboard in Resources */,
 				77868A801AF28C8100F99DA8 /* Information.storyboard in Resources */,
 				77D0D2821AEA9E7700A3AE52 /* Test.storyboard in Resources */,
+				7799034D1B187FDC00014958 /* Upcomingtripdatq.storyboard in Resources */,
 				7781925A1B13324E0021D473 /* Dashboard.storyboard in Resources */,
 				772A6CC61AE6AB2A004B0636 /* Images.xcassets in Resources */,
 			);
@@ -352,6 +375,7 @@
 				77B41FFB1AFB85D900D8F640 /* OffersTableViewCell.m in Sources */,
 				77868A7E1AF28AB500F99DA8 /* SWRevealViewController.m in Sources */,
 				7756419F1AF1155E00DA9FE4 /* Annotationq.m in Sources */,
+				779903501B18805000014958 /* UpcomingdatqViewController.m in Sources */,
 				779B04EA1AE7E18900D3A039 /* HistoryTableViewCell.m in Sources */,
 				772A6CE41AE6AC21004B0636 /* SignUpViewController.m in Sources */,
 				776560AE1B0256EA00C64BED /* UITextField+Util.m in Sources */,
@@ -361,6 +385,7 @@
 				77B41FFE1AFB884000D8F640 /* OffersDataDetail.m in Sources */,
 				77868A8D1AF290CE00F99DA8 /* DataTableViewController.m in Sources */,
 				772A6CBE1AE6AB2A004B0636 /* AppDelegate.m in Sources */,
+				77F71E7D1B21EAC80054400D /* RatingViewController.m in Sources */,
 				77868A841AF28E3000F99DA8 /* RootViewController.m in Sources */,
 				779B04ED1AE7E25F00D3A039 /* HistoryDateViewInformation.m in Sources */,
 				77EC8BA41AE6B62D0090F94E /* SuggestionViewController.m in Sources */,
@@ -368,6 +393,7 @@
 				77868A8A1AF28E7400F99DA8 /* SecondViewController.m in Sources */,
 				77EC8BA11AE6B61E0090F94E /* OffersViewController.m in Sources */,
 				772A6CBB1AE6AB2A004B0636 /* main.m in Sources */,
+				77F71E411B219A720054400D /* RateView.m in Sources */,
 				77EC8B9E1AE6B6090090F94E /* HistroyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

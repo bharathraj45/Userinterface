@@ -20,6 +20,14 @@
 
 @synthesize offersTableViewData;
 @synthesize allTableDataOffers;
+@synthesize lblKualaLumpur;
+@synthesize lblSydney;
+@synthesize lblKualaLumpurSubsubtitle;
+@synthesize lblKualaLumpurSubtitle;
+@synthesize lblSydneySubsubtitle;
+@synthesize lblSydneySubtitle;
+@synthesize viewKualaLumpur;
+@synthesize viewSyndey;
 
 
 
@@ -42,17 +50,47 @@
     
     //self.view.backgroundColor = UIColorFromRGBWithAlpha(0xE75155, 1.0);
 //    UIImage* _backGround = [UIImage imageNamed:@"m3-1"];
-    UIImage* _backGround = [UIImage imageNamed:@"m4"];
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
-    [backgroundImage setImage:_backGround];
-    // choose best mode that works for you
-    [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
-    [self.view insertSubview:backgroundImage atIndex:0];
+//    UIImage* _backGround = [UIImage imageNamed:@"m4"];
+//    UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
+//    [backgroundImage setImage:_backGround];
+//    // choose best mode that works for you
+//    [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
+//    [self.view insertSubview:backgroundImage atIndex:0];
     
-    self.offersTableViewData.layer.cornerRadius = 8.0f;
+    self.offersTableViewData.layer.cornerRadius = 2.0f;
+    //self.view.backgroundColor = [UIColor blackColor];
+    [self setDisplayInformationData];
     
 }
 
+-(void)setDisplayInformationData{
+    lblKualaLumpur.text = @"Air Mauritius is offering you., Yes James, only you have an awesome deal!. Now book a trip to Kuala Lumpur before 31st May at a throw-away price of MURs, 20,500/-";
+    lblKualaLumpurSubtitle.text = @"This is our way of saying thank you for being a loyal customer!";
+    lblKualaLumpurSubsubtitle.text = @"Now go! Grab the deal before it too late!";
+    
+    lblSydney.text = @"Look’s like the party is on in Sydney!. You wouldn’t want to miss-out on all the fun, would you?";
+    lblSydneySubtitle.text = @"Here’s a steal deal just for you James., book a flight to Sydney with Air Mauritius and get 20% off on your flight back!";
+    lblSydneySubsubtitle.text = @"That’s a deal not worth skipping., join the party now!";
+//    UIImage* _backGround = [UIImage imageNamed:@"kualalumpur"];
+//    UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:self.view.frame];
+//    [backgroundImage setImage:_backGround];
+//    // choose best mode that works for you
+//    [backgroundImage setContentMode:UIViewContentModeScaleToFill];
+//    [self.viewKualaLumpur insertSubview:backgroundImage atIndex:0];
+    UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kualalumpur"]];
+    self.viewKualaLumpur.backgroundColor = background;
+    
+//    UIImage* _backGround2 = [UIImage imageNamed:@"Sydney"];
+//    UIImageView *backgroundImage2 = [[UIImageView alloc] initWithFrame:self.view.frame];
+//    [backgroundImage2 setImage:_backGround2];
+//    // choose best mode that works for you
+//    [backgroundImage2 setContentMode:UIViewContentModeScaleAspectFill];
+//    [self.viewSyndey insertSubview:backgroundImage2 atIndex:0];
+    
+    UIColor *background2 = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Sydney"]];
+    self.viewSyndey.backgroundColor = background2;
+    
+}
 //-(void)viewDidAppear:(BOOL)animated{
 //    NSLog(@"viewdidappear");
 //}
@@ -132,26 +170,27 @@
 }
 
 -(void)showDataForOffers{
-    
+//    /https://itunes.apple.com/nz/app/fcm-mobile/id638232499?mt=8
     allTableDataOffers = [[NSMutableArray alloc] init];
     
     NSInteger i = 0;
     OffersDataDetail *offersData;
-    while (i < 7) {
+    while (i < 3) {
         if(i ==0){
-            offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Port Louis - World of Beaches" andDescription:@"An island with hidden natural jewels and picture perfect vistas, Mauritius is truly an exotic destination. Discover the magical land of Mauritius like never before." andDuration:@"3 days left" andImageDescription:@"Imauritius" andImageSelectionStatus:@"Add"];
+            offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Where are you Maryjane?" andDescription:@"Report your Position" andDuration:@"Let us know where you are" andImageDescription:@"Imauritius" andImageSelectionStatus:@"righ"];
         }
         else if(i ==1){
-           offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"London - Move your imagination" andDescription:@"The capital city of London is simply a dream destination for sightseers, and within almost every district there are some exceptional tourist attractions to savour." andDuration:@"4 days left" andImageDescription:@"Ilondon" andImageSelectionStatus:@"Ocheck3"];
+           offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Airport guide" andDescription:@"Auckland" andDuration:@"Shops, cafes, useful numbers" andImageDescription:@"Ilondon" andImageSelectionStatus:@"righ"];
         }
         else if(i == 2){
-            offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Berlin - The travel destination" andDescription:@"Berlin tends to be gray and cold; it can be warm and beautiful in summer but there's no guarantee, so it's best to always pack a jacket." andDuration:@"7 days left" andImageDescription:@"Iberlin" andImageSelectionStatus:@"Add"];
+            
+             offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Whether in Christchurch" andDescription:@"18C (64F) Chance of rain" andDuration:@"View next 4 days" andImageDescription:@"Ilondon" andImageSelectionStatus:@"righ"];
         }
         else if(i == 3){
-            offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Newyork - The city that never sleeps" andDescription:@"New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers." andDuration:@"8 days left" andImageDescription:@"Inewyork" andImageSelectionStatus:@"Ocheck3"];
+            offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Newyork - The city that never sleeps" andDescription:@"New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers." andDuration:@"8 days left" andImageDescription:@"Inewyork" andImageSelectionStatus:@"righ"];
         }
         else{
-            offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Paris - The city of light" andDescription:@"Paris is the city of love, inspiration, art and fashion. The night scene, the Eiffel tower and the warm atmosphere will make you feel directly at home. A trip to Paris is the perfect get-away." andDuration:@"10 days left" andImageDescription:@"Iparis" andImageSelectionStatus:@"Ocheck3"];
+            offersData = [[OffersDataDetail alloc] initWithManufacturerData:@"Paris - The city of light" andDescription:@"Paris is the city of love, inspiration, art and fashion. The night scene, the Eiffel tower and the warm atmosphere will make you feel directly at home. A trip to Paris is the perfect get-away." andDuration:@"10 days left" andImageDescription:@"Iparis" andImageSelectionStatus:@"righ"];
         }
         
         [allTableDataOffers addObject:offersData];

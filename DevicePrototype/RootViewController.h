@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet UIView *offersView;
 @property (weak, nonatomic) IBOutlet UIView *upcomingView;
+@property (weak, nonatomic) IBOutlet UILabel *lblUpcomingData;
 
 -(IBAction)btnLogoutclick:(UIBarButtonItem *)sender;
 

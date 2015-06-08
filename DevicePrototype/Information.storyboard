@@ -310,12 +310,6 @@
                                     <constraint firstAttribute="centerX" secondItem="f9i-Tq-gU6" secondAttribute="centerX" constant="0.5" id="Bus-xM-52P"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AirMauritius1" translatesAutoresizingMaskIntoConstraints="NO" id="l72-KG-ySc">
-                                <rect key="frame" x="0.0" y="20" width="375" height="238"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="l72-KG-ySc" secondAttribute="height" multiplier="375:238" id="t3f-3o-2cS"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CjH-az-KfL">
                                 <rect key="frame" x="9" y="480" width="175" height="80"/>
                                 <subviews>
@@ -368,6 +362,12 @@
                                     <constraint firstItem="pdf-40-skJ" firstAttribute="top" secondItem="ClV-IN-dRG" secondAttribute="bottom" constant="8" id="skZ-kl-N6y"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AirMauritius1" translatesAutoresizingMaskIntoConstraints="NO" id="l72-KG-ySc">
+                                <rect key="frame" x="0.0" y="59" width="375" height="238"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="l72-KG-ySc" secondAttribute="height" multiplier="375:238" id="t3f-3o-2cS"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.59607845544815063" green="0.90588241815567017" blue="0.5058823823928833" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
@@ -377,7 +377,7 @@
                             <constraint firstItem="CjH-az-KfL" firstAttribute="leading" secondItem="fxU-Vt-LkS" secondAttribute="leadingMargin" constant="-7" id="6us-tK-Ltd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="C5d-He-SnA" secondAttribute="trailing" constant="-8" id="7Ai-fJ-nBd"/>
                             <constraint firstItem="SNy-Sz-n7K" firstAttribute="top" secondItem="wbc-Xr-L63" secondAttribute="bottom" constant="10" id="Afr-x6-qwU"/>
-                            <constraint firstItem="l72-KG-ySc" firstAttribute="top" secondItem="4aM-fa-Lll" secondAttribute="bottom" id="CsW-8Z-36i"/>
+                            <constraint firstItem="l72-KG-ySc" firstAttribute="top" secondItem="4aM-fa-Lll" secondAttribute="bottom" constant="-5" id="CsW-8Z-36i"/>
                             <constraint firstItem="CjH-az-KfL" firstAttribute="top" secondItem="SNy-Sz-n7K" secondAttribute="bottom" constant="8" id="DjI-GH-GTn"/>
                             <constraint firstItem="SNy-Sz-n7K" firstAttribute="leading" secondItem="fxU-Vt-LkS" secondAttribute="leadingMargin" constant="-7" id="EaU-bl-fr9"/>
                             <constraint firstItem="Aop-dT-wj4" firstAttribute="top" secondItem="xHc-LH-74p" secondAttribute="bottom" constant="17" id="KZu-2G-qYY"/>

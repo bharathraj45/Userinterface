@@ -29,6 +29,12 @@
 @synthesize lblPassengers;
 @synthesize lblStart;
 @synthesize lblEnd;
+@synthesize informationView;
+@synthesize departureView;
+@synthesize returnView;
+@synthesize seatView;
+@synthesize classView;
+@synthesize modeSegment;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -59,6 +65,13 @@
     // choose best mode that works for you
     [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
     [self.view insertSubview:backgroundImage atIndex:0];
+    
+    self.informationView.layer.cornerRadius = 2.0f;
+    self.departureView.layer.cornerRadius = 2.0f;
+    self.returnView.layer.cornerRadius = 2.0f;
+    self.seatView.layer.cornerRadius = 2.0f;
+    self.classView.layer.cornerRadius = 2.0f;
+    self.modeSegment.layer.cornerRadius = 2.0f;
     
     [self getStartValueq];
     
@@ -123,8 +136,8 @@
     self.txtNumberOfPassengers.layer.masksToBounds = true;
     self.txtNumberOfPassengers.layer.sublayerTransform = CATransform3DMakeTranslation(4, 0, 0);
     
-    self.btnSearch.layer.cornerRadius = 8.0f;
-    self.btnClear.layer.cornerRadius = 8.0f;
+    self.btnSearch.layer.cornerRadius = 2.0f;
+    self.btnClear.layer.cornerRadius = 2.0f;
     //self.tabBarController.selectedIndex = demoSingleton.selectedIndexForDisplay;
     
 }
@@ -207,12 +220,12 @@
 
 -(IBAction)btnDecrementClick:(UIButton *)sender{
     NSInteger seat = [lblPassengers.text intValue];
-    if(seat >0){
+    if(seat >1){
         lblPassengers.text = [NSString stringWithFormat:@"%ld", (long)seat-1];
     }
-    else if(seat == 0){
-        
-    }
+//    else if(seat == 0){
+//        
+//    }
 }
 
 

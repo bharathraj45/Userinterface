@@ -19,6 +19,12 @@
 @property (nonatomic, weak) IBOutlet UILabel *lblPassengers;
 @property (nonatomic, weak) IBOutlet UILabel *lblStart;
 @property (nonatomic, weak) IBOutlet UILabel *lblEnd;
+@property (nonatomic, weak) IBOutlet UIView *informationView;
+@property (nonatomic, weak) IBOutlet UIView *departureView;
+@property (nonatomic, weak) IBOutlet UIView *returnView;
+@property (nonatomic, weak) IBOutlet UIView *seatView;
+@property (nonatomic, weak) IBOutlet UIView *classView;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *modeSegment;
 
 @property (nonatomic, weak) IBOutlet UIButton *btnSearch;
 @property (nonatomic, weak) IBOutlet UIButton *btnClear;
